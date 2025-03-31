@@ -1,8 +1,11 @@
+import UserModel from "@/models/user-model";
 import Link from "next/link";
 import React from "react";
 import GroupForm from "../_components/group-form";
+import { UserType } from "@/interfaces";
 
 async function CreateGroupPage() {
+  const users: UserType[] = await UserModel.find({});
   return (
     <div className="p-5">
       <Link
@@ -15,7 +18,7 @@ async function CreateGroupPage() {
         Create Group Chat
       </h1>
 
-      <GroupForm />
+      <GroupForm users={JSON.parse(JSON.stringify(users))} />
     </div>
   );
 }
