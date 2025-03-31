@@ -2,18 +2,17 @@
 import { UserType } from "@/interfaces";
 import { UserState } from "@/redux/userSlice";
 import { Button, Form, Input, Upload, message } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { UploadImageToFirebaseAndReturnUrl } from "@/helpers/image-upload";
 import { CreateNewChat, UpdateChat } from "@/server-actions/chats";
 import { toast } from "react-toastify";
+import UserModel from "@/models/user-model";
 
 function GroupForm({
-  users,
   initialData = null,
 }: {
-  users: UserType[];
   initialData?: any;
 }) {
   const router = useRouter();
@@ -28,6 +27,15 @@ function GroupForm({
   );
   const [selectedProfilePicture, setSelectedProfilePicture] =
     React.useState<File>();
+  const [users, setUsers] = useState<UserType[]>([])
+  useEffect(() => {
+    const getUsers = async () => {
+      const result = await UserModel.find({});
+      setUsers(JSON.parse(JSON.stringify(result)))
+    }
+    getUsers()
+  }, [])
+
   const onFinish = async (values: any) => {
     try {
       setLoading(true);
