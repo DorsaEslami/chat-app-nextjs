@@ -1,4 +1,3 @@
-export const dynamic = 'force-dynamic'
 import UserModel from "@/models/user-model";
 import Link from "next/link";
 import React from "react";
@@ -6,7 +5,8 @@ import GroupForm from "../_components/group-form";
 import { UserType } from "@/interfaces";
 
 const CreateGroupPage = async () => {
-  const users: UserType[] = await UserModel.find({});
+  let users: UserType[] = []
+  await UserModel.find({}).then((res) => users = res as any).catch((err) => console.log('something went wrong'));
   return (
     <div className="p-5">
       <Link
