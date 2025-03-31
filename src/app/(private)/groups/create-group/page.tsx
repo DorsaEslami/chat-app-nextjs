@@ -4,9 +4,8 @@ import React from "react";
 import GroupForm from "../_components/group-form";
 import { UserType } from "@/interfaces";
 
-const CreateGroupPage = async () => {
-  let users: UserType[] = []
-  await UserModel.find({}).then((res) => users = res as any).catch((err) => console.log('something went wrong'));
+async function CreateGroupPage() {
+  const users: UserType[] = await UserModel.find({});
   return (
     <div className="p-5">
       <Link

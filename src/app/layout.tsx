@@ -9,17 +9,18 @@ import ReduxProvider from "@/providers/redux-provider";
 import '@ant-design/v5-patch-for-react-19';
 import { ToastContainer } from "react-toastify";
 import 'remixicon/fonts/remixicon.css'
+import { connectMongoDB } from "@/config/db-config";
 export const metadata: Metadata = {
   title: "Chat App",
   description: "Real time chat app",
 };
 
-export default function RootLayout({
+const RootLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-
+}>) => {
+  await connectMongoDB()
   return (
     <ClerkProvider>
       <html lang="en">
@@ -38,3 +39,4 @@ export default function RootLayout({
     </ClerkProvider>
   );
 }
+export default RootLayout
