@@ -3,7 +3,7 @@ import { connectMongoDB } from "@/config/db-config";
 import UserModel from "@/models/user-model";
 import { currentUser } from '@clerk/nextjs/server';
 
-// connectMongoDB();
+connectMongoDB();
 
 export const GetCurrentUserFromMongoDB = async () => {
   try {
