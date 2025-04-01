@@ -93,13 +93,13 @@ function NewMessage() {
             />
           </div>
         )}
-        <Button
+        {/* <Button
           className="border-gray-300"
           type="text"
           onClick={() => setShowImageSelector(!showImageSelector)}
         >
           <i className="ri-folder-image-line"></i>
-        </Button>
+        </Button> */}
         <Button
           className="border-gray-300"
           type="text"
@@ -131,7 +131,7 @@ function NewMessage() {
         SEND
       </Button>
 
-      {showImageSelector && (
+      {/* {showImageSelector && (
         <ImageSelector
           setShowImageSelector={setShowImageSelector}
           showImageSelector={showImageSelector}
@@ -140,7 +140,7 @@ function NewMessage() {
           onSend={onSend}
           loading={loading}
         />
-      )}
+      )} */}
     </div>
   );
 }
