@@ -1,4 +1,6 @@
+import { connectMongoDB } from "@/config/db-config";
 import mongoose from "mongoose";
+connectMongoDB();
 
 const userSchema = new mongoose.Schema(
   {
